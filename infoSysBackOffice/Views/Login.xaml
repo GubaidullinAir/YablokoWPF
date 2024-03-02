@@ -1,0 +1,73 @@
+﻿<Window x:Class="infoSysBackOffice.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:infoSysBackOffice"
+        mc:Ignorable="d"           
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+              
+        Title="Login" Height="400" Width="600" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen" x:Name="wind">
+    <Grid>
+        <Rectangle RadiusY="8" RadiusX="8" Fill="White"/>
+        <Image  Margin="310,0,0,0" Stretch="UniformToFill"/>
+        <Rectangle Margin="310,0,0,0"   RadiusY="8">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.112"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <SolidColorBrush Color="DarkGreen">
+
+                </SolidColorBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+
+        <StackPanel Margin="20,10,290,10">
+            <Label Content="Вход" Foreground="DarkGreen" FontFamily="Segoe UI Black" FontSize="24" Margin="0,10" VerticalAlignment="Top" HorizontalAlignment="Left" AutomationProperties.IsRowHeader="True"/>
+            <StackPanel Orientation="Horizontal">
+
+            </StackPanel>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Foreground="#707070"><Run Text="Логин" Foreground="DarkGreen"/></TextBlock>
+            <StackPanel Margin="0,15" Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Foreground="DarkGreen"/>
+                <TextBox materialDesign:HintAssist.Hint="Пользователь"  Name="txtUsername" Width="250" Margin="5"  Foreground="DarkGreen"/>
+            </StackPanel >
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Key" VerticalAlignment="Center" Foreground="DarkGreen"/>
+                <PasswordBox materialDesign:HintAssist.Hint="Пароль" Name="txtpassword" Width="250" Margin="5" Foreground="DarkGreen"/>
+            </StackPanel>
+            <Grid>
+                <CheckBox Content="Запомнить меня" Margin="5,10" Foreground="GreenYellow"/>
+                <Label Content="Я забыл свой пароль" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Foreground="GreenYellow"/>
+            </Grid>
+            <Button Content="Войти" FontFamily="Impact" FontSize="18" Width="100" Background="DarkGreen" BorderBrush="GreenYellow" Click="Button_Click"/>
+            <StackPanel HorizontalAlignment="Center">
+                <Label Content="У меня нет аккаунта" HorizontalAlignment="Center" Margin="10" Foreground="DarkGreen" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,35">
+                <Label Content="С помощью" Foreground="DarkGreen" VerticalAlignment="Center"/>
+                <Button HorizontalAlignment="Center" FontFamily="Impact" FontSize="18" Background="DarkGreen" BorderBrush="GreenYellow">
+                    <materialDesign:PackIcon Kind="Vkontakte" VerticalAlignment="Center" Foreground="White"/>
+                </Button>
+                <Button HorizontalAlignment="Center" FontFamily="Impact" FontSize="18" Margin="15,0" Background="DarkGreen" BorderBrush="GreenYellow" >
+                    <materialDesign:PackIcon Kind="Google" VerticalAlignment="Center" Foreground="White" />
+                </Button>
+                <Button HorizontalAlignment="Center" FontFamily="Impact" FontSize="18" Background="DarkGreen" BorderBrush="GreenYellow">
+                    <materialDesign:PackIcon Kind="Telegram"  VerticalAlignment="Center" Foreground="White"/>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="310,0,0,3">
+            <Image Source="https://im.wampi.ru/2022/09/28/logo.png" Width="155"></Image>
+            <TextBlock Text="Есть третий мир, а третьего пути не существует" Foreground="White" Width="280" FontSize="24" FontFamily="Champagne &amp; Limousines" TextWrapping="Wrap" TextAlignment="Center"/>
+            <TextBlock Text="А.Г. Явлинский" Foreground="White" FontSize="18" FontFamily="Champagne &amp; Limousines" TextWrapping="Wrap" TextAlignment="Right" Margin="10"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

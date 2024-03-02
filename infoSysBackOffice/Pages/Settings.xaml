@@ -1,0 +1,53 @@
+﻿<Page x:Class="infoSysBackOffice.Pages.Settings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:infoSysBackOffice.Pages"
+      mc:Ignorable="d"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SettingsMain" ShowsNavigationUI="False">
+
+
+    <Grid x:Name="GridMain" HorizontalAlignment="Left" VerticalAlignment="Top" Height="440" Width="725" Background="IndianRed">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="1" Grid.ColumnSpan="2" HorizontalAlignment="Left"  Orientation="Horizontal">
+            <Label  Content="Темная тема" Foreground="White" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
+            <ToggleButton Width="Auto" Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10 0 0 0"/>
+        </StackPanel>
+
+
+
+        <StackPanel  Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="352" Margin="0 40 0 40">
+            <Label  Content="Смена пароля" Foreground="White" FontFamily="Arial" FontSize="24" FontWeight="Bold" Width="179" Height="64" HorizontalAlignment="Left"/>
+            <Label  Content="Введите старый пароль" Foreground="White" FontFamily="Arial" FontSize="16" FontWeight="Bold" Width="Auto" Height="33" HorizontalAlignment="Left"/>
+            <TextBox Margin="0 0 0 10"/>
+            <Label  Content="Введите новый пароль" Foreground="White" FontFamily="Arial" FontSize="16" FontWeight="Bold" Width="Auto" Height="33" HorizontalAlignment="Left"/>
+            <TextBox Margin="0 0 0 10"/>
+            <Button Content="Изменить" FontFamily="Impact" FontSize="18" Width="Auto" Background="DarkGreen" BorderBrush="GreenYellow" Margin="0 10 0 0"/>
+        </StackPanel>
+
+        <StackPanel  Grid.Row="2"   HorizontalAlignment="Left"  Orientation="Horizontal" VerticalAlignment="Center">
+            <Label  Content="Наши социальные сети" Foreground="White" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
+            <Button HorizontalAlignment="Center" FontFamily="Impact" FontSize="18" Background="DarkGreen" BorderBrush="GreenYellow" Margin="15 0 0 21">
+                <materialDesign:PackIcon Kind="Telegram" VerticalAlignment="Center" Foreground="White"/>
+            </Button>
+            <Button HorizontalAlignment="Center" FontFamily="Impact" FontSize="18" Background="DarkGreen" BorderBrush="GreenYellow" Margin="15 0 0 21">
+                <materialDesign:PackIcon Kind="Vk" VerticalAlignment="Center" Foreground="White" />
+            </Button>
+            <Button HorizontalAlignment="Center" FontFamily="Impact" FontSize="18" Background="DarkGreen" BorderBrush="GreenYellow" Margin="15 0 0 21">
+                <materialDesign:PackIcon Kind="Web" VerticalAlignment="Center" Foreground="White"/>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Page>

@@ -1,0 +1,51 @@
+﻿<Page x:Class="infoSysBackOffice.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:infoSysBackOffice.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage" ShowsNavigationUI="False">
+
+    <Grid x:Name="GridMain" HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="535" Width="725" Background="IndianRed">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <Image Grid.Column="0" Grid.Row="0"   Margin="10 0 0 0" x:Name="profilesPhoto" />
+
+
+
+        <StackPanel Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="4" Margin="15 0 0 0">
+            <Label   Content="ФИО" Foreground="White" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
+            <Label    Foreground="White" FontFamily="Arial" FontSize="24" x:Name="labelName"  />
+
+            <Label   Content="&#10;Регион" Foreground="White" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
+            <Label   Content="" Foreground="White" FontFamily="Arial" FontSize="24" x:Name="labelCity" />
+
+            <Label  Content="&#10;Email" Foreground="White" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
+            <Label  Content="" Foreground="White" FontFamily="Arial" FontSize="24" x:Name="labelEmail"/>
+
+            <Label  Content="&#10;Телефон" Foreground="White" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
+            <Label  Content="" Foreground="White" FontFamily="Arial" FontSize="24" x:Name="labelTelephone"/>
+
+            <Label  Content="&#10;Должность " Foreground="White" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
+            <Label  Content="" Foreground="White" FontFamily="Arial" FontSize="24" x:Name="labelDolz"/>
+        </StackPanel>
+
+        <Image Source="https://im.wampi.ru/2022/10/01/BEZ-IMENI-1-1.png"  Grid.Column="0" Grid.Row="1">
+        </Image>
+
+
+    </Grid>
+</Page>

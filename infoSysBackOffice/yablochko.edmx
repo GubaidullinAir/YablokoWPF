@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище partYablokoModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="appeal">
+          <Key>
+            <PropertyRef Name="idObras" />
+          </Key>
+          <Property Name="idObras" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tema" Type="nvarchar" MaxLength="40" />
+          <Property Name="textobr" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="chlPart">
+          <Key>
+            <PropertyRef Name="idObrac" />
+          </Key>
+          <Property Name="idObrac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPart" Type="int" />
+          <Property Name="surn" Type="nvarchar" MaxLength="40" />
+          <Property Name="name" Type="nvarchar" MaxLength="40" />
+          <Property Name="otchestvo" Type="nvarchar" MaxLength="40" />
+          <Property Name="dolzn" Type="nvarchar" MaxLength="40" />
+          <Property Name="city" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="profilesLink">
+          <Key>
+            <PropertyRef Name="idUsera" />
+          </Key>
+          <Property Name="idUsera" Type="int" Nullable="false" />
+          <Property Name="link" Type="nvarchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="idObras" />
+          </Key>
+          <Property Name="idUsera" Type="int" />
+          <Property Name="idObras" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="idUsera" />
+          </Key>
+          <Property Name="idUsera" Type="int" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="40" />
+          <Property Name="name" Type="nvarchar" MaxLength="40" />
+          <Property Name="otchestvo" Type="nvarchar" MaxLength="40" />
+          <Property Name="city" Type="nvarchar" MaxLength="40" />
+          <Property Name="email" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="dolz" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_appeal_request">
+          <End Role="request" Type="Self.request" Multiplicity="1" />
+          <End Role="appeal" Type="Self.appeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="request">
+              <PropertyRef Name="idObras" />
+            </Principal>
+            <Dependent Role="appeal">
+              <PropertyRef Name="idObras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_chlPart_appeal">
+          <End Role="appeal" Type="Self.appeal" Multiplicity="1" />
+          <End Role="chlPart" Type="Self.chlPart" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="appeal">
+              <PropertyRef Name="idObras" />
+            </Principal>
+            <Dependent Role="chlPart">
+              <PropertyRef Name="idObrac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_request_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUsera" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="idUsera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище partYablokoModelContainer">
+          <EntitySet Name="appeal" EntityType="Self.appeal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chlPart" EntityType="Self.chlPart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="profilesLink" EntityType="Self.profilesLink" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="request" EntityType="Self.request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_appeal_request" Association="Self.FK_appeal_request">
+            <End Role="request" EntitySet="request" />
+            <End Role="appeal" EntitySet="appeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_chlPart_appeal" Association="Self.FK_chlPart_appeal">
+            <End Role="appeal" EntitySet="appeal" />
+            <End Role="chlPart" EntitySet="chlPart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_request_user" Association="Self.FK_request_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="partYablokoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="appeal">
+          <Key>
+            <PropertyRef Name="idObras" />
+          </Key>
+          <Property Name="idObras" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tema" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="textobr" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="request" Relationship="Self.FK_appeal_request" FromRole="appeal" ToRole="request" />
+          <NavigationProperty Name="chlPart" Relationship="Self.FK_chlPart_appeal" FromRole="appeal" ToRole="chlPart" />
+        </EntityType>
+        <EntityType Name="chlPart">
+          <Key>
+            <PropertyRef Name="idObrac" />
+          </Key>
+          <Property Name="idObrac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPart" Type="Int32" />
+          <Property Name="surn" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="otchestvo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="dolzn" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="appeal" Relationship="Self.FK_chlPart_appeal" FromRole="chlPart" ToRole="appeal" />
+        </EntityType>
+        <EntityType Name="profilesLink">
+          <Key>
+            <PropertyRef Name="idUsera" />
+          </Key>
+          <Property Name="idUsera" Type="Int32" Nullable="false" />
+          <Property Name="link" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="idObras" />
+          </Key>
+          <Property Name="idUsera" Type="Int32" />
+          <Property Name="idObras" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="appeal" Relationship="Self.FK_appeal_request" FromRole="request" ToRole="appeal" />
+          <NavigationProperty Name="user" Relationship="Self.FK_request_user" FromRole="request" ToRole="user" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="idUsera" />
+          </Key>
+          <Property Name="idUsera" Type="Int32" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="otchestvo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dolz" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="requests" Relationship="Self.FK_request_user" FromRole="user" ToRole="request" />
+        </EntityType>
+        <Association Name="FK_appeal_request">
+          <End Role="request" Type="Self.request" Multiplicity="1" />
+          <End Role="appeal" Type="Self.appeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="request">
+              <PropertyRef Name="idObras" />
+            </Principal>
+            <Dependent Role="appeal">
+              <PropertyRef Name="idObras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_chlPart_appeal">
+          <End Role="appeal" Type="Self.appeal" Multiplicity="1" />
+          <End Role="chlPart" Type="Self.chlPart" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="appeal">
+              <PropertyRef Name="idObras" />
+            </Principal>
+            <Dependent Role="chlPart">
+              <PropertyRef Name="idObrac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_request_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUsera" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="idUsera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="partYablokoEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="appeals" EntityType="Self.appeal" />
+          <EntitySet Name="chlParts" EntityType="Self.chlPart" />
+          <EntitySet Name="profilesLinks" EntityType="Self.profilesLink" />
+          <EntitySet Name="requests" EntityType="Self.request" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK_appeal_request" Association="Self.FK_appeal_request">
+            <End Role="request" EntitySet="requests" />
+            <End Role="appeal" EntitySet="appeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_chlPart_appeal" Association="Self.FK_chlPart_appeal">
+            <End Role="appeal" EntitySet="appeals" />
+            <End Role="chlPart" EntitySet="chlParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_request_user" Association="Self.FK_request_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="request" EntitySet="requests" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище partYablokoModelContainer" CdmEntityContainer="partYablokoEntities1">
+          <EntitySetMapping Name="appeals">
+            <EntityTypeMapping TypeName="partYablokoModel.appeal">
+              <MappingFragment StoreEntitySet="appeal">
+                <ScalarProperty Name="idObras" ColumnName="idObras" />
+                <ScalarProperty Name="tema" ColumnName="tema" />
+                <ScalarProperty Name="textobr" ColumnName="textobr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chlParts">
+            <EntityTypeMapping TypeName="partYablokoModel.chlPart">
+              <MappingFragment StoreEntitySet="chlPart">
+                <ScalarProperty Name="idObrac" ColumnName="idObrac" />
+                <ScalarProperty Name="idPart" ColumnName="idPart" />
+                <ScalarProperty Name="surn" ColumnName="surn" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="otchestvo" ColumnName="otchestvo" />
+                <ScalarProperty Name="dolzn" ColumnName="dolzn" />
+                <ScalarProperty Name="city" ColumnName="city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="profilesLinks">
+            <EntityTypeMapping TypeName="partYablokoModel.profilesLink">
+              <MappingFragment StoreEntitySet="profilesLink">
+                <ScalarProperty Name="idUsera" ColumnName="idUsera" />
+                <ScalarProperty Name="link" ColumnName="link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="requests">
+            <EntityTypeMapping TypeName="partYablokoModel.request">
+              <MappingFragment StoreEntitySet="request">
+                <ScalarProperty Name="idUsera" ColumnName="idUsera" />
+                <ScalarProperty Name="idObras" ColumnName="idObras" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="partYablokoModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="partYablokoModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="idUsera" ColumnName="idUsera" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="otchestvo" ColumnName="otchestvo" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="dolz" ColumnName="dolz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

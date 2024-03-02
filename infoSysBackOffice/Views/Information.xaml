@@ -1,0 +1,54 @@
+﻿<Window x:Class="infoSysBackOffice.Views.Information"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Information" Height="450" Width="800">
+    <Grid Background="IndianRed">
+        <!-- Разместите здесь элементы для отображения информации о пользователе -->
+        <StackPanel Margin="10">
+            <Label Content="ФИО:" Foreground="White" FontFamily="Arial" FontSize="16"/>
+            <Label x:Name="fullname" Foreground="White" FontFamily="Arial" FontSize="16"/>
+            
+            <Label Content="Региональное отделение:" Foreground="White" FontFamily="Arial" FontSize="16"/>
+            <Label x:Name="regionalBranchLabel" Foreground="White" FontFamily="Arial" FontSize="16"/>
+
+            <Label Content="Местное отделение:" Foreground="White" FontFamily="Arial" FontSize="16"/>
+            <Label x:Name="localBranchLabel" Foreground="White" FontFamily="Arial" FontSize="16"/>
+
+            <Label Content="ФИО:" Foreground="White" FontFamily="Arial" FontSize="16"/>
+            <Label x:Name="fullNameLabel" Foreground="White" FontFamily="Arial" FontSize="16"/>
+
+            <Label Content="Телефон:" Foreground="White" FontFamily="Arial" FontSize="16"/>
+            <Label x:Name="phoneLabel" Foreground="White" FontFamily="Arial" FontSize="16"/>
+
+            <Label Content="Пол:" Foreground="White" FontFamily="Arial" FontSize="16"/>
+            <Label x:Name="genderLabel" Foreground="White" FontFamily="Arial" FontSize="16"/>
+
+            <Label Content="Дата рождения:" Foreground="White" FontFamily="Arial" FontSize="16"/>
+            <Label x:Name="birthdayLabel" Foreground="White" FontFamily="Arial" FontSize="16"/>
+            <WrapPanel>
+                <Button Content="Назад"
+                     Style="{StaticResource MaterialDesignOutlinedButton}" ToolTip="MaterialDesignOutlinedButton"
+                    HorizontalAlignment="Left"
+                    Margin="5"
+                    Command="{Binding DeleteUserCommand}"
+                    CommandParameter="{Binding SelectedUser}"
+                    Click="Button_Click"
+                    Background="White"/>
+                <Button Content="Принять"
+                    HorizontalAlignment="Left"
+                    Margin="5"
+                    Command="{Binding DeleteUserCommand}"
+                    CommandParameter="{Binding SelectedUser}"
+                    Click="Button_Click_1"/>
+                <Button Content="Удалить"
+                    HorizontalAlignment="Left"
+                    Margin="5"
+                    Command="{Binding DeleteUserCommand}"
+                    CommandParameter="{Binding SelectedUser}"
+                    Click="Button_Click_2"/>
+            </WrapPanel>
+           
+            
+        </StackPanel>
+    </Grid>
+</Window>
